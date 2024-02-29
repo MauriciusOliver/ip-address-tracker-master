@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     async function updateData(ipAddress) {
         try {
-          const apiUrl = `http://ip-api.com/json/${ipAddress}`;
+          const apiUrl = `https://ip-api.com/json/${ipAddress}`;
           const response = await fetch(apiUrl);
     
           if (!response.ok) {
