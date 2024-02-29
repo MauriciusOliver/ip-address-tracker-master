@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   // Obtém o endereço IP do cliente
   async function getIpAddress() {
     try {
-        const response = await fetch('https://ip-api.com/json/');
+        const response = await fetch('/componentes/api/getIpData.js');
         const data = await response.json();
         return data.query || 'N/A';
     } catch (error) {
