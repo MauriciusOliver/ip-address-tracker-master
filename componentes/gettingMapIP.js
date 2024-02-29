@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     async function updateData(ipAddress) {
       try {
           const apiKey = 'e22ae16b7cf624';
-          const apiUrl = `http://ipinfo.io/${ipAddress}?token=${apiKey}`;
+          const apiUrl = `https://ipinfo.io/${ipAddress}?token=${apiKey}`;
           const response = await fetch(apiUrl);
   
           if (!response.ok) {
