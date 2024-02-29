@@ -1,0 +1,161 @@
+body {
+  font-family: "Rubik", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 1150px;
+    padding-top: 60px;
+}
+
+.conteudo {
+    padding: 10px;
+    height: 250px;
+    text-align: center;
+    background-image: url(./../images/pattern-bg-desktop.png);
+    background-size: cover;
+}
+
+.titulo {
+    color: #FFFFFF;
+    font-size: 24px;
+    text-align: center;
+    padding: 22px;
+}
+
+input {
+    width: 320px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 20px;
+}
+
+.botao__input {
+    position: absolute;
+    padding: 13px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #000000;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.conteudo__endereco {
+    position: absolute;
+    margin: 80px 20px 20px 150px;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.endereco--list {
+    display: flex;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+
+.end__item {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 500;
+    color: hsl(0, 0%, 59%);
+    text-transform: uppercase;
+    padding: 40px 25px 40px 10px;
+    width: 175px;
+}
+
+.xqdl {
+    font-size: 18px;
+    padding-top: 10px;
+    color: hsl(0, 0%, 17%);
+    text-transform: none;
+    font-weight: 600;
+}
+
+#map {
+    height: 620px;
+    z-index: 0;
+}
+
+@media screen and (max-width: 425px) {
+
+    .conteudo {
+        background-image: url(./../images/pattern-bg-mobile.png);
+        background-size: cover;
+    }
+    .conteudo__endereco {
+        /* display: none; */
+        margin: 0;
+        z-index: 1;
+    }
+
+    .endereco--list {
+        margin-left: 10px;
+        flex-direction: column;
+    }
+
+    .end__item {
+        width: 285px;
+        padding: 20px 10px 20px 0px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .xqdl {
+        font-size: 20px;
+    }
+
+    .container {
+        padding-top: 0;
+    }
+
+    .input {
+        width: 200px;
+        margin-bottom: 25px;
+        font-size: 17px;
+        height: 45px;
+    }
+
+    .botao__input {
+        margin-left: -10px
+    }
+
+    .conteudo {
+        padding: 0;
+    }
+
+    #map {
+        height: 75vh;
+        z-index: 0;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .conteudo__endereco {
+        margin: 0;
+    }
+
+    .end__item {
+        padding: 40px 10px 40px 0px
+    }
+
+    .input {
+        margin-bottom: 12px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .botao__input {
+        margin-left: -6px
+    }
+
+    .xqdl {
+        font-size: 15px;
+    }
+}

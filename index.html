@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./componentes/reset.css">
+  <link rel="stylesheet" href="./componentes/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+ integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+ crossorigin=""></script>
+  
+  <title>Frontend Mentor | IP Address Tracker</title>
+</head>
+<body>
+  <div class="container">
+    <div class="conteudo">
+      <h1 class="titulo">IP Address Tracker</h1>
+      <label for="address">
+        <input type="text" name="address" placeholder="Search for any IP address or domain" class="input">
+        <button class="botao__input"><img src="./images/icon-arrow.svg" alt="icone de uma flecha"></button>
+      </label>
+      <div class="conteudo__endereco">
+        <ul class="endereco--list">
+          <li class="end__item">IP Address
+            <span class="xqdl" id="ip"></span>
+          </li>
+          <li class="end__item">Location
+            <span class="xqdl" id="location"></span>
+          </li>
+          <li class="end__item">Timezone
+           <span class="xqdl" id="timezone"></span>
+          </li>
+          <li class="end__item">ISP
+            <span class="xqdl" id="isp"></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+  <div id="map"></div>  
+
+  </div>
+  <script src="./componentes/gettingMapIP.js"></script>
+</body>
+</html>
