@@ -14,32 +14,40 @@ document.addEventListener('DOMContentLoaded', async function () {
     const button = document.querySelector('.botao__input');
 
     async function updateData(ipAddress) {
-        try {
-          const apiUrl = 'https://ip-api.com/json/';
+      try {
+          const apiKey = 'e22ae16b7cf624';
+          const apiUrl = `http://ipinfo.io/${ipAddress}?token=${apiKey}`;
           const response = await fetch(apiUrl);
-    
+  
           if (!response.ok) {
-            throw new Error(`Erro na solicitação. Status: ${response.status}`);
+              throw new Error(`Erro na solicitação. Status: ${response.status}`);
           }
-    
+  
           const data = await response.json();
     
           // Log para verificar os dados recebidos da API
           console.log(data);
   
         // Atualiza as informações na div de endereço
-        spanIP.textContent = data.query || 'N/A';
-        spanLocation.textContent = `${data.countryCode || 'N/A'}, ${data.city || 'N/A'}`;
-        spanTimezone.textContent = data.timezone || 'N/A';
-        spanISP.textContent = data.isp || 'N/A';
+        // spanIP.textContent = data.query || 'N/A';
+        // spanLocation.textContent = `${data.countryCode || 'N/A'}, ${data.city || 'N/A'}`;
+        // spanTimezone.textContent = data.timezone || 'N/A';
+        // spanISP.textContent = data.isp || 'N/A';
 
-        updateMap(data.lat, data.lon);
+        spanIP.textContent = data.ip || 'N/A';
+        spanLocation.textContent = `${data.country || 'N/A'}, ${data.region || 'N/A'}`;
+        spanTimezone.textContent = data.timezone || 'N/A';
+        spanISP.textContent = data.org || 'N/A';
+
+        updateMap(data.loc);
 
         } catch (error) {
         console.error('Erro ao obter dados da API:', error);
         }
     }
-    function updateMap(latitude, longitude) {
+    function updateMap(location) {
+      const [latitude, longitude] = location.split(',');
+
         if (map) {
             map.remove();
         }
@@ -71,12 +79,10 @@ document.addEventListener('DOMContentLoaded', async function () {
       }
 
     button.addEventListener('click', function () {
-        const newIP = inputIP.value.trim();
-    
-        if (newIP) {
+      const newIP = inputIP.value.trim();
+      if (newIP) {
           // Atualiza o texto "IP Address"
           spanIP.textContent = newIP;
-    
           // Chama a função para obter informações com base no novo IP
           updateData(newIP);
         }
@@ -84,15 +90,17 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   // Obtém o endereço IP do cliente
   async function getIpAddress() {
-    try {
-        const response = await fetch('/api/getIpData.js');
-        const data = await response.json();
-        return data.query || 'N/A';
-    } catch (error) {
-        console.error('Erro ao obter endereço IP:', error);
-        return 'N/A';
+        try {
+            // Substitua 'e22ae16b7cf624' pelo seu token de API fornecido pela ipinfo.io
+            const apiKey = 'e22ae16b7cf624';
+            const response = await fetch(`https://ipinfo.io?token=${apiKey}`);
+            const data = await response.json();
+            return data.ip || 'N/A';
+        } catch (error) {
+            console.error('Erro ao obter endereço IP:', error);
+            return 'N/A';
+        }
     }
-}
 
 // Obtém o endereço IP do cliente e atualiza os dados
 const clientIpAddress = await getIpAddress();
