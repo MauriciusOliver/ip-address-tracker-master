@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     async function updateData(ipAddress) {
         try {
-          const apiUrl = `https://ip-api.com/json/${ipAddress}`;
+          const apiUrl = `http://ip-api.com/json/${ipAddress}`;
           const response = await fetch(apiUrl);
     
           if (!response.ok) {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Inicializa o mapa com as novas coordenadas
         map = L.map('map').setView([latitude, longitude], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19,
+          maxZoom: 20,
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
     
@@ -84,4 +84,20 @@ document.addEventListener('DOMContentLoaded', async function () {
     
       // Inicializa com o IP padrão
       updateData('8.8.8.8');
-  });
+
+  // Obtém o endereço IP do cliente
+  async function getIpAddress() {
+    try {
+        const response = await fetch('http://ip-api.com/json/');
+        const data = await response.json();
+        return data.query || 'N/A';
+    } catch (error) {
+        console.error('Erro ao obter endereço IP:', error);
+        return 'N/A';
+    }
+}
+
+// Obtém o endereço IP do cliente e atualiza os dados
+const clientIpAddress = await getIpAddress();
+updateData(clientIpAddress);
+});
