@@ -27,12 +27,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     
           // Log para verificar os dados recebidos da API
           console.log(data);
-  
-        // Atualiza as informações na div de endereço
-        // spanIP.textContent = data.query || 'N/A';
-        // spanLocation.textContent = `${data.countryCode || 'N/A'}, ${data.city || 'N/A'}`;
-        // spanTimezone.textContent = data.timezone || 'N/A';
-        // spanISP.textContent = data.isp || 'N/A';
 
         spanIP.textContent = data.ip || 'N/A';
         spanLocation.textContent = `${data.country || 'N/A'}, ${data.region || 'N/A'}`;
