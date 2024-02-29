@@ -81,9 +81,6 @@ document.addEventListener('DOMContentLoaded', async function () {
           updateData(newIP);
         }
       });
-    
-      // Inicializa com o IP padrão
-      updateData('8.8.8.8');
 
   // Obtém o endereço IP do cliente
   async function getIpAddress() {
